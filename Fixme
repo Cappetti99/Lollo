@@ -1,0 +1,12 @@
+[] collegare la view al controller per il main
+[] sostituire la view del main col controller
+[] fare l'event table e capire come funziona
+[] fare il model
+[] fare il controller
+[]
+[]
+[]
+[]
+[] 
+
+l'idea è che il controller gestisca view e model e che quindi per chiamare tutto si passi da lui
