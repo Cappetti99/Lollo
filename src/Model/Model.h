@@ -10,6 +10,8 @@
 #include "ToDoItem.h"
 #include "ToDoList.h"
 
+//il model contiene solo i dati
+
 class Model {
 
 public:

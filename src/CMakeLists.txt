@@ -10,6 +10,8 @@ include(${wxWidgets_USE_FILE})
 
 # Add executable target
 add_executable(Lollo main.cpp
+        ToDoApp.cpp
+        ToDoApp.h
         Model/ToDoItem.cpp
         Model/ToDoItem.h
         Model/ToDoList.cpp
@@ -18,12 +20,14 @@ add_executable(Lollo main.cpp
         Control/Control.h
         View/View.cpp
         View/View.h
-        View/ToDoApp.cpp
-        View/ToDoApp.h
         View/Frame.cpp
         View/Frame.h
         Model/Model.cpp
         Model/Model.h
+        Control/ItemController.cpp
+        Control/ItemController.h
+        Control/ListController.cpp
+        Control/ListController.h
 )
 
 # Include wxWidgets headers

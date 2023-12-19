@@ -11,8 +11,10 @@
 //wxEND_EVENT_TABLE()
 
 Control::Control(ToDoList model, View view) {
-
     view.show();
+
+//    Bind(wxEVT_BUTTON, &Control::addTask, this, ID_AddTaskButton);
+//    Bind(wxEVT_BUTTON, &Control::removeTask, this, ID_RemoveTaskButton);
 
 }
 

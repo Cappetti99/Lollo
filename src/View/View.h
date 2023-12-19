@@ -16,7 +16,7 @@
 #include <wx/checklst.h>
 #include <wx/datectrl.h>
 
-#include "../View/ToDoApp.h" //così ho sia ToDoApp che Frame
+#include "../ToDoApp.h" //così ho sia ToDoApp che Frame
 
 
 class View {
