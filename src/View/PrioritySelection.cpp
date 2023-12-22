@@ -9,9 +9,8 @@ wxBEGIN_EVENT_TABLE(PrioritySelection, wxDialog)
                 EVT_BUTTON(wxID_CANCEL, PrioritySelection::OnCancel)
 wxEND_EVENT_TABLE()
 
-
-PrioritySelection::PrioritySelection(wxWindow* parent, const wxString& title)
-        : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize) {
+PrioritySelection::PrioritySelection(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
+                                     const wxSize &size, long style) {
 
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -32,7 +31,8 @@ PrioritySelection::PrioritySelection(wxWindow* parent, const wxString& title)
     mainSizer->Add(buttonSizer, 0, wxALIGN_RIGHT);
 
     SetSizerAndFit(mainSizer);
-}   //questo ci serve per aprire la schermata e tutti i bottoni che usiamo
+}
+
 
 void PrioritySelection::OnOK(wxCommandEvent& event) {
     if (lowButton->GetValue()) {
@@ -55,3 +55,4 @@ void PrioritySelection::OnCancel(wxCommandEvent& event) {
 Priority PrioritySelection::getSelectedPriority() const {
     return selectedPriority;
 }
+
