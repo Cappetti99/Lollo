@@ -8,6 +8,13 @@
 
 class ItemController {
 
+public:
+    ItemController();
+    void addItem();
+    void removeItem();
+    void markItemAsCompleted();
+    void searchItem();
+
 };
 
 

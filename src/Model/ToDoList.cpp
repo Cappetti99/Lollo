@@ -13,14 +13,14 @@ std::vector<ToDoItem>* ToDoList::getItems() {
 }
 
 void ToDoList::addItem(ToDoItem item) {
-    this->items.push_back(item);
+    //this->items.push_back(item);
 }
 
 void ToDoList::removeItem(int index) {
-    this->items.erase(this->items.begin() + index);
+    //this->items.erase(this->items.begin() + index);
 }
 
 void ToDoList::markItemAsCompleted(int index) {
-    this->items[index].setIsCompleted(true);
+    //this->items[index].setIsCompleted(true);
 }
 

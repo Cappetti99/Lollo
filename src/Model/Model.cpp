@@ -4,6 +4,8 @@
 
 #include "Model.h"
 
+Model::Model() {}
+
 void Model::addTask() {
 
     std::cout << "Model::addTask()" << std::endl;
@@ -21,3 +23,4 @@ void Model::searchTask() {
     std::cout << "Model::searchTask()" << std::endl;
 
 }
+

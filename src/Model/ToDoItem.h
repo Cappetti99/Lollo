@@ -19,7 +19,7 @@ private:
     int index;
 
 public:
-    ToDoItem(wxString name, wxString description, int priority);
+    ToDoItem( /*wxString name, wxString description, int priority*/);
     wxString getName();
     wxString getDescription();
     int getPriority();

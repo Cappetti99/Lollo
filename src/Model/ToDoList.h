@@ -17,7 +17,7 @@ private:
     public:
     ToDoList();
     std::vector<ToDoItem>* getItems();
-    void addItem(ToDoItem item);
+    static void addItem(ToDoItem item);
     void removeItem(int index);
     void markItemAsCompleted(int index);
 

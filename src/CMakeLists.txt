@@ -28,6 +28,11 @@ add_executable(Lollo main.cpp
         Control/ItemController.h
         Control/ListController.cpp
         Control/ListController.h
+        View/DateSelection.cpp
+        View/DateSelection.h
+        View/PrioritySelection.cpp
+        View/PrioritySelection.h
+        View/Priority.h
 )
 
 # Include wxWidgets headers

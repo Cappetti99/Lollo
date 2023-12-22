@@ -15,6 +15,8 @@
 class Model {
 
 public:
+    Model();
+
     void addTask();
     void removeTask();
     void searchTask();

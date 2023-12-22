@@ -10,19 +10,26 @@
 #include "../Model/Model.h"
 #include "../View/View.h"
 
-class Control {
+class Control : public wxFrame {
 
 private:
-    Model model;
-    View view;
+//    Model model;
+//    View view; //così facendo entra prima nel costruttore della view e poi nel costruttore del controller, idem con model
 
-    public:
-    Control(ToDoList model, View view);
-    void addTask();
-    void removeTask();
-    void searchTask();
+public:
+    Control();
+
+    static void addTask();
+
+    static void removeTask();
+
+    static void searchTask();
+
     void markAsCompleted();
+
     void updateView();
+
+
 };
 
 

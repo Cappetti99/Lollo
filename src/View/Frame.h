@@ -20,14 +20,14 @@ private:
     void searchTaskButton(wxCommandEvent& event);
 
 
-
 };
 
 
 enum{
     ID_AddTaskButton = 1,
     ID_RemoveTaskButton = 2,
-    ID_SearchTaskButton = 3
+    ID_SearchTaskButton = 3,
+    ID_SortTaskButton = 4
 };
 
 #endif //LOLLO_FRAME_H

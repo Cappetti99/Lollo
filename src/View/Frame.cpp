@@ -3,6 +3,7 @@
 //
 
 #include "Frame.h"
+#include "../Control/Control.h"
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
                 EVT_BUTTON(ID_AddTaskButton, Frame::addTaskButton)
@@ -10,9 +11,14 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
                 EVT_BUTTON(ID_SearchTaskButton, Frame::searchTaskButton)
 wxEND_EVENT_TABLE()
 
+//potrei fare che nel costruttore rimanda a delle funzioni che creano bottoni e gestiscono la cosa mandandola al controller
+
 
 Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
         : wxFrame(NULL, wxID_ANY, title, pos, size) {
+
+    std::cout << "Frame created" << std::endl;
+
     auto buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
     auto taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
@@ -44,15 +50,18 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
 
 void Frame::addTaskButton(wxCommandEvent &event) {
     std::cout << "addTaskButton" << std::endl;
+    Control::addTask();
 }
 
 void Frame::removeTaskButton(wxCommandEvent &event) {
 
     std::cout << "removeTaskButton" << std::endl;
+    Control::removeTask();
 }
 
 void Frame::searchTaskButton(wxCommandEvent &event) {
 
     std::cout << "searchTaskButton" << std::endl;
+    Control::searchTask();
 }
 

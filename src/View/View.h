@@ -16,7 +16,7 @@
 #include <wx/checklst.h>
 #include <wx/datectrl.h>
 
-#include "../ToDoApp.h" //così ho sia ToDoApp che Frame
+#include "Frame.h"
 
 
 class View {
@@ -24,7 +24,6 @@ class View {
 public:
     View();
     void show();
-    void displayItem(); //cosa fa vedere? serve?
 
 
 };

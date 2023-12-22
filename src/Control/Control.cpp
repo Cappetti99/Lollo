@@ -3,37 +3,44 @@
 //
 
 #include "Control.h"
+#include "ItemController.h"
 
-//wxBEGIN_EVENT_TABLE(Frame, wxFrame)
-//                EVT_BUTTON(ID_AddTaskButton, Model::addTask)
-//                EVT_BUTTON(ID_RemoveTaskButton, Model::removeTask)
-//                EVT_BUTTON(ID_SearchTaskButton, Model::searchTask)
-//wxEND_EVENT_TABLE()
+Control::Control() {
 
-Control::Control(ToDoList model, View view) {
-    view.show();
+    std::cout << "Control created" << std::endl;
 
-//    Bind(wxEVT_BUTTON, &Control::addTask, this, ID_AddTaskButton);
-//    Bind(wxEVT_BUTTON, &Control::removeTask, this, ID_RemoveTaskButton);
+    auto view = new View();
+    view->show();
+
 
 }
 
 void Control::addTask() {
 
+    std::cout << "Control::addTask()" << std::endl;
+    ItemController itemController;
+    itemController.addItem();
+
+
 }
 
 void Control::removeTask() {
+
+    std::cout << "Control::removeTask()" << std::endl;
 
 }
 
 void Control::searchTask() {
 
+    std::cout << "Control::searchTask()" << std::endl;
 }
 
 void Control::markAsCompleted() {
 
+    std::cout << "Control::markAsCompleted()" << std::endl;
 }
 
 void Control::updateView() {
 
+    std::cout << "Control::updateView()" << std::endl;
 }

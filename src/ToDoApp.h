@@ -7,7 +7,7 @@
 
 #include <wx/wx.h>
 
-#include "View/Frame.h"
+#include "Control/Control.h"
 
 class ToDoApp : public wxApp{
 
@@ -17,7 +17,8 @@ public:
     virtual bool OnInit();
 
 private:
-    wxFrame *frame;
+//    Model model;
+//    View view;
 
 };
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <wx/wx.h>
-#include "Control/Control.h"
+#include "ToDoApp.h"
 
 
 int main(int argc, char *argv[]) {
