@@ -13,9 +13,12 @@
 class DateSelection : public wxDialog {
 
 public:
-    DateSelection(wxWindow* parent, wxWindowID id = wxID_ANY, const wxDateTime& dt = wxDefaultDateTime,
-    const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT);
+    DateSelection(wxWindow* parent, const wxString& title);
+    wxDatePickerCtrl* getDatePicker() const;
+    void setDatePicker(wxDatePickerCtrl *datePicker);
 
+    private:
+    wxDatePickerCtrl* datePicker;
 
 };
 

@@ -4,14 +4,27 @@
 
 #include "DateSelection.h"
 
-//DateSelection::DateSelection(wxWindow* parent, wxWindowID id, const wxDateTime& dt,
-//                                   const wxPoint& pos, const wxSize& size, long style)
-//        : wxDatePickerCtrl(parent, id, dt, pos, size, style) {
-//    // Bind the date changed event to a custom handler
-//    //Bind(wxEVT_DATE_CHANGED, &DateSelection::OnDateChanged, this);
-//}
+DateSelection::DateSelection(wxWindow* parent, const wxString& title)
+        : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize) {
 
-DateSelection::DateSelection(wxWindow *parent, wxWindowID id, const wxDateTime &dt, const wxPoint &pos,
-                             const wxSize &size, long style) {
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    SetSizer(mainSizer);
 
+    datePicker = new wxDatePickerCtrl(this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition,
+                                      wxDefaultSize, wxDP_DEFAULT | wxDP_SHOWCENTURY);
+    mainSizer->Add(datePicker, 1, wxEXPAND | wxALL, 5);
+
+    wxStdDialogButtonSizer* buttonSizer = CreateStdDialogButtonSizer(wxOK | wxCANCEL);
+    if (buttonSizer) {
+        mainSizer->Add(buttonSizer, 0, wxALIGN_RIGHT | wxALL, 10);
+    }
+
+}
+
+wxDatePickerCtrl *DateSelection::getDatePicker() const {
+    return datePicker;
+}
+
+void DateSelection::setDatePicker(wxDatePickerCtrl *datePicker) {
+    this->datePicker = datePicker;
 }

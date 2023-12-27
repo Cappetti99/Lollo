@@ -12,25 +12,20 @@ class ToDoItem {
 
 private:
     wxString name;
-    wxString description;
-    wxString date;
+    wxDateTime date;
     bool isCompleted;
     int priority; // 0 = low, 1 = medium, 2 = high
     int index;
 
 public:
-    ToDoItem( wxString name /*, wxString description, int priority*/);
+    ToDoItem( wxString name, wxDateTime date /*, int priority*/);
     wxString getName();
-    wxString getDescription();
     int getPriority();
     bool getIsCompleted();
     void setIsCompleted(bool isCompleted);
     void setName(wxString name);
-    void setDescription(wxString description);
     void setPriority(int priority);
 
-    wxString getDate();
-    void setDate(wxString date);
 
 };
 

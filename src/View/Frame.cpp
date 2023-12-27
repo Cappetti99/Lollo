@@ -4,6 +4,8 @@
 
 #include "Frame.h"
 #include "../Control/Control.h"
+#include "DateSelection.h"
+#include "PrioritySelection.h"
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
                 EVT_BUTTON(ID_AddTaskButton, Frame::addTaskButton)
@@ -22,7 +24,7 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
     auto buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
     taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
-                                       wxTE_PROCESS_ENTER);
+                                  wxTE_PROCESS_ENTER);
 
     auto taskListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE);
 
@@ -51,9 +53,21 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
 void Frame::addTaskButton(wxCommandEvent &event) {
     std::cout << "addTaskButton" << std::endl;
     wxString name = taskTextCtrl->GetValue();
+    DateSelection dateSelection(this, "Select expiration date:");
+    if (!name.IsEmpty()) {
+        if (dateSelection.ShowModal() == wxID_OK) {
+            wxDateTime dateTime = dateSelection.getDatePicker()->GetValue();
+//            PrioritySelection prioritySelection(this, "Select priority:");
+//            if(prioritySelection.ShowModal() == wxID_OK){
+//                int priority = prioritySelection.getPrioritySlider()->GetValue();
+//                Control::addTask(name, dateTime, priority);
+            Control::addTask(name, dateTime);
 
-    Control::addTask(name);
+
+        }
+    }
 }
+
 
 void Frame::removeTaskButton(wxCommandEvent &event) {
 

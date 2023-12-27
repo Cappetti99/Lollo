@@ -4,8 +4,9 @@
 
 #include "ToDoItem.h"
 
-ToDoItem::ToDoItem( wxString name /*, wxString description, int priority*/ ) {
+ToDoItem::ToDoItem( wxString name, wxDateTime date /*, int priority*/ ) {
     this->name = name;
+    this->date = date;
 
 //    this->description = description;
 //    this->priority = priority;
@@ -13,6 +14,7 @@ ToDoItem::ToDoItem( wxString name /*, wxString description, int priority*/ ) {
 
     std::cout << "item created" << std::endl;
     wxMessageBox(name);
+    //wxMessageBox(date);
 
 
 }
@@ -21,9 +23,6 @@ wxString ToDoItem::getName() {
     return this->name;
 }
 
-wxString ToDoItem::getDescription() {
-    return this->description;
-}
 
 int ToDoItem::getPriority() {
     return this->priority;
@@ -41,18 +40,8 @@ void ToDoItem::setName(wxString name) {
     this->name = name;
 }
 
-void ToDoItem::setDescription(wxString description) {
-    this->description = description;
-}
-
 void ToDoItem::setPriority(int priority) {
     this->priority = priority;
 }
 
-wxString ToDoItem::getDate() {
-    return this->date;
-}
 
-void ToDoItem::setDate(wxString date) {
-    this->date = date;
-}

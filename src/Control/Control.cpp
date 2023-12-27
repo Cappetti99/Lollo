@@ -15,11 +15,11 @@ Control::Control() {
 
 }
 
-void Control::addTask(wxString name) {
+void Control::addTask(wxString name, wxDateTime date) {
 
     std::cout << "Control::addTask()" << std::endl;
     ItemController itemController;
-    itemController.addItem(name);
+    itemController.addItem(name, date);
 
 
 }

@@ -11,7 +11,7 @@ class ItemController {
 
 public:
     ItemController();
-    void addItem(wxString name);
+    void addItem(wxString name, wxDateTime date);
     void removeItem();
     void markItemAsCompleted();
     void searchItem();
