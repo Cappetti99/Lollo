@@ -5,12 +5,13 @@
 #ifndef LOLLO_ITEMCONTROLLER_H
 #define LOLLO_ITEMCONTROLLER_H
 
+#include <wx/wx.h>
 
 class ItemController {
 
 public:
     ItemController();
-    void addItem();
+    void addItem(wxString name);
     void removeItem();
     void markItemAsCompleted();
     void searchItem();

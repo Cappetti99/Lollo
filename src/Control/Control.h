@@ -19,7 +19,7 @@ private:
 public:
     Control();
 
-    static void addTask();
+    static void addTask(wxString name);
 
     static void removeTask();
 

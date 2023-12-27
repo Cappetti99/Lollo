@@ -4,13 +4,16 @@
 
 #include "ToDoItem.h"
 
-ToDoItem::ToDoItem( /*wxString name, wxString description, int priority*/ ) {
-//    this->name = name;
+ToDoItem::ToDoItem( wxString name /*, wxString description, int priority*/ ) {
+    this->name = name;
+
 //    this->description = description;
 //    this->priority = priority;
 //    this->isCompleted = false;
 
     std::cout << "item created" << std::endl;
+    wxMessageBox(name);
+
 
 }
 

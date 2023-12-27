@@ -21,7 +21,7 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
 
     auto buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    auto taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
+    taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                        wxTE_PROCESS_ENTER);
 
     auto taskListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE);
@@ -50,7 +50,9 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
 
 void Frame::addTaskButton(wxCommandEvent &event) {
     std::cout << "addTaskButton" << std::endl;
-    Control::addTask();
+    wxString name = taskTextCtrl->GetValue();
+
+    Control::addTask(name);
 }
 
 void Frame::removeTaskButton(wxCommandEvent &event) {

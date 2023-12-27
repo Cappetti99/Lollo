@@ -10,10 +10,11 @@ ItemController::ItemController() {
 
 }
 
-void ItemController::addItem() {
+void ItemController::addItem(wxString name) {
 
     std::cout << "ItemController::addItem()" << std::endl;
-    auto item = new ToDoItem();
+
+    auto item = new ToDoItem(name);
 }
 
 void ItemController::removeItem() {

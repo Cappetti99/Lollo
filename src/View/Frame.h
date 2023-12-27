@@ -15,10 +15,12 @@ wxDECLARE_EVENT_TABLE();
 
 private:
     //gestione bottoni
+    //devono essere private?
     void addTaskButton(wxCommandEvent& event);
     void removeTaskButton(wxCommandEvent& event);
     void searchTaskButton(wxCommandEvent& event);
 
+    wxTextCtrl* taskTextCtrl;
 
 };
 
