@@ -2,20 +2,17 @@
 // Created by cappe on 18/12/23.
 //
 
-#include <iostream>
 #include "ItemController.h"
-#include "../Model/ToDoItem.h"
 
 ItemController::ItemController() {
 
 }
 
-void ItemController::addItem(wxString name, wxDateTime date) {
+void ItemController::addItem(wxString name, wxDateTime date, Priority priority) {
 
     std::cout << "ItemController::addItem()" << std::endl;
 
-
-    auto item = new ToDoItem(name, date);
+    auto item = new ToDoItem(name, date, priority);
 }
 
 void ItemController::removeItem() {

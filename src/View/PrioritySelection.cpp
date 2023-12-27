@@ -9,8 +9,8 @@ wxBEGIN_EVENT_TABLE(PrioritySelection, wxDialog)
                 EVT_BUTTON(wxID_CANCEL, PrioritySelection::OnCancel)
 wxEND_EVENT_TABLE()
 
-PrioritySelection::PrioritySelection(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
-                                     const wxSize &size, long style) {
+PrioritySelection::PrioritySelection(wxWindow* parent, const wxString& title)
+        : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize) {
 
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -66,3 +66,36 @@ Priority PrioritySelection::getSelectedPriority() const {
 
 ///////////////////////////////////////////////     //
 
+//#include "PrioritySelectionDialog.h"
+//
+//wxBEGIN_EVENT_TABLE(PrioritySelectionDialog, wxDialog)
+//                EVT_BUTTON(wxID_OK, PrioritySelectionDialog::OnOK)
+//                EVT_BUTTON(wxID_CANCEL, PrioritySelectionDialog::OnCancel)
+//wxEND_EVENT_TABLE()
+//
+////la classe ci serve per decidere la priorità di ogni task
+////si vuol mettere un colore per rendere più visiva la cosa?
+//
+//  //questo ci serve per aprire la schermata e tutti i bottoni che usiamo
+//
+//void PrioritySelectionDialog::OnOK(wxCommandEvent& event) {
+//    if (lowButton->GetValue()) {
+//        selectedPriority = Priority::Low;
+//    } else if (mediumButton->GetValue()) {
+//        selectedPriority = Priority::Medium;
+//    } else if (highButton->GetValue()) {
+//        selectedPriority = Priority::High;
+//    } else {
+//        selectedPriority = Priority::Low;
+//    }
+//
+//    EndModal(wxID_OK);
+//}
+//
+//void PrioritySelectionDialog::OnCancel(wxCommandEvent& event) {
+//    EndModal(wxID_CANCEL);
+//}
+//
+//Priority PrioritySelectionDialog::getSelectedPriority() const {
+//    return selectedPriority;
+//}

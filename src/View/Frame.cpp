@@ -57,13 +57,12 @@ void Frame::addTaskButton(wxCommandEvent &event) {
     if (!name.IsEmpty()) {
         if (dateSelection.ShowModal() == wxID_OK) {
             wxDateTime dateTime = dateSelection.getDatePicker()->GetValue();
-//            PrioritySelection prioritySelection(this, "Select priority:");
-//            if(prioritySelection.ShowModal() == wxID_OK){
-//                int priority = prioritySelection.getPrioritySlider()->GetValue();
-//                Control::addTask(name, dateTime, priority);
-            Control::addTask(name, dateTime);
+            PrioritySelection prioritySelection(this, "Select priority:");
+            if (prioritySelection.ShowModal() == wxID_OK) {
+                Priority priority = prioritySelection.getSelectedPriority();
+                Control::addTask(name, dateTime, priority);
 
-
+            }
         }
     }
 }

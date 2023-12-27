@@ -9,6 +9,8 @@
 
 #include "../Model/Model.h"
 #include "../View/View.h"
+#include "ItemController.h"
+
 
 class Control : public wxFrame {
 
@@ -19,7 +21,7 @@ private:
 public:
     Control();
 
-    static void addTask(wxString name, wxDateTime date);
+    static void addTask(wxString name, wxDateTime date, Priority priority);
 
     static void removeTask();
 

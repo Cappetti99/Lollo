@@ -3,7 +3,6 @@
 //
 
 #include "Control.h"
-#include "ItemController.h"
 
 Control::Control() {
 
@@ -15,11 +14,11 @@ Control::Control() {
 
 }
 
-void Control::addTask(wxString name, wxDateTime date) {
+void Control::addTask(wxString name, wxDateTime date, Priority priority) {
 
     std::cout << "Control::addTask()" << std::endl;
     ItemController itemController;
-    itemController.addItem(name, date);
+    itemController.addItem(name, date, priority);
 
 
 }

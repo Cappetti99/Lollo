@@ -4,7 +4,7 @@
 
 #include "ToDoItem.h"
 
-ToDoItem::ToDoItem( wxString name, wxDateTime date /*, int priority*/ ) {
+ToDoItem::ToDoItem( wxString name, wxDateTime date, Priority priority /*, int priority*/ ) {
     this->name = name;
     this->date = date;
 
@@ -23,11 +23,6 @@ wxString ToDoItem::getName() {
     return this->name;
 }
 
-
-int ToDoItem::getPriority() {
-    return this->priority;
-}
-
 bool ToDoItem::getIsCompleted() {
     return this->isCompleted;
 }
@@ -38,10 +33,6 @@ void ToDoItem::setIsCompleted(bool isCompleted) {
 
 void ToDoItem::setName(wxString name) {
     this->name = name;
-}
-
-void ToDoItem::setPriority(int priority) {
-    this->priority = priority;
 }
 
 

@@ -6,6 +6,7 @@
 #define LOLLO_TODOITEM_H
 
 #include <wx/wx.h>
+#include "../View/Priority.h"
 
 
 class ToDoItem {
@@ -14,11 +15,12 @@ private:
     wxString name;
     wxDateTime date;
     bool isCompleted;
-    int priority; // 0 = low, 1 = medium, 2 = high
+    Priority priority;
+    //int priority; // 0 = low, 1 = medium, 2 = high
     int index;
 
 public:
-    ToDoItem( wxString name, wxDateTime date /*, int priority*/);
+    ToDoItem( wxString name, wxDateTime date, Priority priority );
     wxString getName();
     int getPriority();
     bool getIsCompleted();
