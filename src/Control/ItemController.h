@@ -9,9 +9,11 @@
 #include <iostream>
 
 #include "../Model/ToDoItem.h"
+#include "../View/Frame.h"
+#include "ItemControllerObserver.h"
 
 
-class ItemController {
+class ItemController : public ItemControllerObserver {
 
 public:
     ItemController();
@@ -19,6 +21,8 @@ public:
     void removeItem();
     void markItemAsCompleted();
     void searchItem();
+
+    virtual void onAddTaskButtonClicked() override;
 
 };
 

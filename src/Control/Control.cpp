@@ -8,10 +8,8 @@ Control::Control() {
 
     std::cout << "Control created" << std::endl;
 
-    auto view = new View();
-    view->show();
-
-
+    auto itemController = new ItemController();
+    auto listController = new ListController();
 }
 
 void Control::addTask(wxString name, wxDateTime date, Priority priority) {

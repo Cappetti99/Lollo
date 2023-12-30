@@ -19,9 +19,6 @@ View::View() {
 
 void View::show() {
 
-    auto frame = new Frame( "ToDoList", wxPoint(800, 600), wxSize(450, 340) ); //creo la finestra e tutti i suoi bottoni
-    frame->Show( true );
-
 }
 
 

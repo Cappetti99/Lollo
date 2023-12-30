@@ -7,6 +7,7 @@
 
 #include <wx/wx.h>
 #include "../View/Priority.h"
+#include "Task.h"
 
 
 class ToDoItem {

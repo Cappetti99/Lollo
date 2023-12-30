@@ -9,7 +9,8 @@
 
 #include "Control/Control.h"
 
-class ToDoApp : public wxApp{
+
+class ToDoApp : public wxApp {
 
 public:
     ToDoApp();

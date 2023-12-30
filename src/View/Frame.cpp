@@ -3,9 +3,7 @@
 //
 
 #include "Frame.h"
-#include "../Control/Control.h"
-#include "DateSelection.h"
-#include "PrioritySelection.h"
+
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
                 EVT_BUTTON(ID_AddTaskButton, Frame::addTaskButton)
@@ -16,8 +14,8 @@ wxEND_EVENT_TABLE()
 //potrei fare che nel costruttore rimanda a delle funzioni che creano bottoni e gestiscono la cosa mandandola al controller
 
 
-Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size)
-        : wxFrame(NULL, wxID_ANY, title, pos, size) {
+Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, ItemControllerObserver *observer)
+        : wxFrame(NULL, wxID_ANY, title, pos, size), observer(observer) {
 
     std::cout << "Frame created" << std::endl;
 
@@ -60,10 +58,17 @@ void Frame::addTaskButton(wxCommandEvent &event) {
             PrioritySelection prioritySelection(this, "Select priority:");
             if (prioritySelection.ShowModal() == wxID_OK) {
                 Priority priority = prioritySelection.getSelectedPriority();
-                Control::addTask(name, dateTime, priority);
+                names.push_back(name);
+                dates.push_back(dateTime);
+                priorities.push_back(priority);
+                taskTextCtrl->Clear();
 
             }
         }
+    }
+
+    if (observer) {
+        observer->onAddTaskButtonClicked();
     }
 }
 
@@ -71,12 +76,40 @@ void Frame::addTaskButton(wxCommandEvent &event) {
 void Frame::removeTaskButton(wxCommandEvent &event) {
 
     std::cout << "removeTaskButton" << std::endl;
-    Control::removeTask();
 }
 
 void Frame::searchTaskButton(wxCommandEvent &event) {
 
     std::cout << "searchTaskButton" << std::endl;
-    Control::searchTask();
 }
+
+wxString &Frame::getNames() {
+
+    wxString name;
+    if (!names.empty()) {
+        name = names.back();
+        names.pop_back();
+    }
+    return name;
+}
+
+wxDateTime &Frame::getDates() {
+    wxDateTime date;
+    if (!dates.empty()) {
+        date = dates.back();
+        dates.pop_back();
+    }
+    return date;
+}
+
+Priority &Frame::getPriorities() {
+    Priority priority;
+    if (!priorities.empty()) {
+        priority = priorities.back();
+        priorities.pop_back();
+    }
+    return priority;
+}
+
+
 

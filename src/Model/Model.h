@@ -7,8 +7,8 @@
 
 #include <wx/wx.h>
 
-#include "ToDoItem.h"
-#include "ToDoList.h"
+#include "../Model/ToDoList.h"
+
 
 //il model contiene solo i dati
 

@@ -7,25 +7,43 @@
 
 #include <wx/wx.h>
 
-class Frame : public wxFrame{
+#include "DateSelection.h"
+#include "PrioritySelection.h"
+#include "../Control/ItemControllerObserver.h"
+
+class Frame : public wxFrame {
 public:
-    Frame(const wxString& title, const wxPoint& pos, const wxSize& size);
+    Frame(const wxString &title, const wxPoint &pos, const wxSize &size, ItemControllerObserver *observer);
 
 wxDECLARE_EVENT_TABLE();
 
 private:
     //gestione bottoni
     //devono essere private?
-    void addTaskButton(wxCommandEvent& event);
-    void removeTaskButton(wxCommandEvent& event);
-    void searchTaskButton(wxCommandEvent& event);
+    void addTaskButton(wxCommandEvent &event);
 
-    wxTextCtrl* taskTextCtrl;
+    void removeTaskButton(wxCommandEvent &event);
+
+    void searchTaskButton(wxCommandEvent &event);
+
+    wxTextCtrl *taskTextCtrl;
+    std::vector<wxString> names;
+    std::vector<wxDateTime> dates;
+    std::vector<Priority> priorities;
+
+public:
+     wxString &getNames() ;
+
+    wxDateTime &getDates() ;
+
+    Priority &getPriorities() ;
+
+    ItemControllerObserver *observer;
 
 };
 
 
-enum{
+enum {
     ID_AddTaskButton = 1,
     ID_RemoveTaskButton = 2,
     ID_SearchTaskButton = 3,

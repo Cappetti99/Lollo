@@ -7,12 +7,12 @@
 
 #include <wx/wx.h>
 
-#include "../Model/Model.h"
-#include "../View/View.h"
+
 #include "ItemController.h"
+#include "ListController.h"
 
 
-class Control : public wxFrame {
+class Control {
 
 private:
 //    Model model;

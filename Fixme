@@ -1,12 +1,15 @@
-[] collegare la view al controller per il main
-[] sostituire la view del main col controller
-[] fare l'event table e capire come funziona
-[] fare il model
-[] fare il controller
+[] far vedere a schermo le task
+[] cominciare con i test
+[] mettere un controllo per le date antecedenti all'oggi
 []
 []
 []
 []
-[] 
+[]
+[]
+[]
+[]
+[] Serve un frame anche per le liste?
+
 
 l'idea è che il controller gestisca view e model e che quindi per chiamare tutto si passi da lui
