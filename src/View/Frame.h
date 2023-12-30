@@ -32,11 +32,11 @@ private:
     std::vector<Priority> priorities;
 
 public:
-     wxString &getNames() ;
+     wxString getNames() ;
 
-    wxDateTime &getDates() ;
+    wxDateTime getDates() ;
 
-    Priority &getPriorities() ;
+    Priority getPriorities() ;
 
     ItemControllerObserver *observer;
 

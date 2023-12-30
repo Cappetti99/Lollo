@@ -35,7 +35,6 @@ add_executable(Lollo main.cpp
         View/Priority.h
         Model/Task.cpp
         Model/Task.h
-        Control/ItemControllerObserver.cpp
         Control/ItemControllerObserver.h
 )
 

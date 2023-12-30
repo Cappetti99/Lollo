@@ -7,7 +7,7 @@
 
 ItemController::ItemController() {
 
-    auto frame = new Frame( "ToDoList", wxPoint(800, 600), wxSize(450, 340), this );
+    frame = new Frame( "ToDoList", wxPoint(800, 600), wxSize(450, 340), this);
     frame->Show( true );
 
 }
@@ -15,6 +15,9 @@ ItemController::ItemController() {
 void ItemController::onAddTaskButtonClicked() {
 
     std::cout << "ItemController::onAddTaskButtonClicked()" << std::endl;
+
+    wxMessageBox(frame->getNames());
+    wxMessageBox(frame->getDates().FormatISODate());
 
 }
 

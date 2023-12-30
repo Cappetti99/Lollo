@@ -153,14 +153,6 @@ build CMakeFiles/Lollo.dir/Model/Task.cpp.o: CXX_COMPILER__Lollo_unscanned_Debug
   OBJECT_DIR = CMakeFiles/Lollo.dir
   OBJECT_FILE_DIR = CMakeFiles/Lollo.dir/Model
 
-build CMakeFiles/Lollo.dir/Control/ItemControllerObserver.cpp.o: CXX_COMPILER__Lollo_unscanned_Debug /home/cappe/CLionProjects/Lollo/src/Control/ItemControllerObserver.cpp || cmake_object_order_depends_target_Lollo
-  DEFINES = -D_FILE_OFFSET_BITS=64 -D__WXGTK__
-  DEP_FILE = CMakeFiles/Lollo.dir/Control/ItemControllerObserver.cpp.o.d
-  FLAGS = -pthread -g -fdiagnostics-color=always
-  INCLUDES = -isystem /usr/local/lib/wx/include/gtk3-unicode-static-3.1 -isystem /usr/local/include/wx-3.1
-  OBJECT_DIR = CMakeFiles/Lollo.dir
-  OBJECT_FILE_DIR = CMakeFiles/Lollo.dir/Control
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Lollo
@@ -169,7 +161,7 @@ build CMakeFiles/Lollo.dir/Control/ItemControllerObserver.cpp.o: CXX_COMPILER__L
 #############################################
 # Link the executable Lollo
 
-build Lollo: CXX_EXECUTABLE_LINKER__Lollo_Debug CMakeFiles/Lollo.dir/main.cpp.o CMakeFiles/Lollo.dir/ToDoApp.cpp.o CMakeFiles/Lollo.dir/Model/ToDoItem.cpp.o CMakeFiles/Lollo.dir/Model/ToDoList.cpp.o CMakeFiles/Lollo.dir/Control/Control.cpp.o CMakeFiles/Lollo.dir/View/View.cpp.o CMakeFiles/Lollo.dir/View/Frame.cpp.o CMakeFiles/Lollo.dir/Model/Model.cpp.o CMakeFiles/Lollo.dir/Control/ItemController.cpp.o CMakeFiles/Lollo.dir/Control/ListController.cpp.o CMakeFiles/Lollo.dir/View/DateSelection.cpp.o CMakeFiles/Lollo.dir/View/PrioritySelection.cpp.o CMakeFiles/Lollo.dir/Model/Task.cpp.o CMakeFiles/Lollo.dir/Control/ItemControllerObserver.cpp.o | /usr/local/lib/libwx_gtk3u_core-3.1.a /usr/local/lib/libwx_baseu-3.1.a
+build Lollo: CXX_EXECUTABLE_LINKER__Lollo_Debug CMakeFiles/Lollo.dir/main.cpp.o CMakeFiles/Lollo.dir/ToDoApp.cpp.o CMakeFiles/Lollo.dir/Model/ToDoItem.cpp.o CMakeFiles/Lollo.dir/Model/ToDoList.cpp.o CMakeFiles/Lollo.dir/Control/Control.cpp.o CMakeFiles/Lollo.dir/View/View.cpp.o CMakeFiles/Lollo.dir/View/Frame.cpp.o CMakeFiles/Lollo.dir/Model/Model.cpp.o CMakeFiles/Lollo.dir/Control/ItemController.cpp.o CMakeFiles/Lollo.dir/Control/ListController.cpp.o CMakeFiles/Lollo.dir/View/DateSelection.cpp.o CMakeFiles/Lollo.dir/View/PrioritySelection.cpp.o CMakeFiles/Lollo.dir/Model/Task.cpp.o | /usr/local/lib/libwx_gtk3u_core-3.1.a /usr/local/lib/libwx_baseu-3.1.a
   FLAGS = -pthread -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  -L/usr/local/lib  -pthread  /usr/local/lib/libwx_gtk3u_core-3.1.a  /usr/local/lib/libwx_baseu-3.1.a  -lgthread-2.0  -pthread  -lX11  -lSM  -lgtk-3  -lgdk-3  -lpangocairo-1.0  -latk-1.0  -lcairo-gobject  -lcairo  -lgdk_pixbuf-2.0  -lgio-2.0  -lXtst  -lpangoft2-1.0  -lpango-1.0  -lgobject-2.0  -lglib-2.0  -lharfbuzz  -lfontconfig  -lfreetype  -lwxregexu-3.1  -lwxscintilla-3.1  -lexpat  -lpng  -ljpeg  -ltiff  -ljbig  -lz  -llzma  -lm
   LINK_PATH = -L/usr/local/lib

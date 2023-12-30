@@ -62,7 +62,6 @@ void Frame::addTaskButton(wxCommandEvent &event) {
                 dates.push_back(dateTime);
                 priorities.push_back(priority);
                 taskTextCtrl->Clear();
-
             }
         }
     }
@@ -83,7 +82,7 @@ void Frame::searchTaskButton(wxCommandEvent &event) {
     std::cout << "searchTaskButton" << std::endl;
 }
 
-wxString &Frame::getNames() {
+wxString Frame::getNames() {
 
     wxString name;
     if (!names.empty()) {
@@ -93,7 +92,7 @@ wxString &Frame::getNames() {
     return name;
 }
 
-wxDateTime &Frame::getDates() {
+wxDateTime Frame::getDates() {
     wxDateTime date;
     if (!dates.empty()) {
         date = dates.back();
@@ -102,7 +101,7 @@ wxDateTime &Frame::getDates() {
     return date;
 }
 
-Priority &Frame::getPriorities() {
+Priority Frame::getPriorities() {
     Priority priority;
     if (!priorities.empty()) {
         priority = priorities.back();

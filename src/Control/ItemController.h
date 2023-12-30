@@ -17,12 +17,19 @@ class ItemController : public ItemControllerObserver {
 
 public:
     ItemController();
+
     void addItem(wxString name, wxDateTime date, Priority priority);
+
     void removeItem();
+
     void markItemAsCompleted();
+
     void searchItem();
 
     virtual void onAddTaskButtonClicked() override;
+
+private:
+    Frame *frame;
 
 };
 

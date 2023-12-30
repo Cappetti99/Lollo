@@ -13,3 +13,10 @@
 
 
 l'idea è che il controller gestisca view e model e che quindi per chiamare tutto si passi da lui
+
+
+
+
+cose che possono servire:
+
+                wxMessageBox(name);
