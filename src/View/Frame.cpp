@@ -24,7 +24,7 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
     taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                   wxTE_PROCESS_ENTER);
 
-    auto taskListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE);
+    taskListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE);
 
     //bottoni
     auto addButton = new wxButton(this, ID_AddTaskButton, "Add Task");
@@ -108,6 +108,29 @@ Priority Frame::getPriorities() {
         priorities.pop_back();
     }
     return priority;
+}
+
+void Frame::showTaskFrame(wxString name, wxDateTime date, Priority priority) {
+
+//    wxString taskString = task.getTitle() + " - Priority: " + priorityStr +
+//                          " - " + task.getExpirationDate().Format("%d %B, %Y");
+//    taskCheckBox->Append(taskString);
+
+    wxString priorityString;
+
+    if (priority == Priority::High) {
+        priorityString = "HIGH";
+    } else if (priority == Priority::Medium) {
+        priorityString = "MEDIUM";
+    } else if (priority == Priority::Low) {
+        priorityString = "LOW";
+    }
+
+    wxString taskString = name + " - Priority: " + priorityString +
+                          " - " + date.Format("%d %B, %Y");
+
+    taskListBox->Append(taskString);
+
 }
 
 

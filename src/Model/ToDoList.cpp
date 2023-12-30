@@ -5,7 +5,9 @@
 #include "ToDoList.h"
 
 ToDoList::ToDoList() {
-    this->items = std::vector<ToDoItem>();
+
+
+
 }
 
 std::vector<ToDoItem>* ToDoList::getItems() {

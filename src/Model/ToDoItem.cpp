@@ -4,19 +4,21 @@
 
 #include "ToDoItem.h"
 
-ToDoItem::ToDoItem( wxString name, wxDateTime date, Priority priority /*, int priority*/ ) {
+//todo da pensare come collegare la task qui con quella che facciamo vedere nel frame
+
+
+ToDoItem::ToDoItem(wxString name, wxDateTime date, Priority priority /*, int priority*/ ) {
     this->name = name;
     this->date = date;
-
-//    this->description = description;
-//    this->priority = priority;
-//    this->isCompleted = false;
+    this->priority = priority;
+    this->isCompleted = false;
 
     std::cout << "item created" << std::endl;
     wxMessageBox(name);
-    //wxMessageBox(date);
+    wxMessageBox(date.FormatISODate());
 
-
+    auto task = new Task(name, priority, isCompleted, date);
+//todo da pensare come pushare il task nella lista
 }
 
 wxString ToDoItem::getName() {
@@ -35,4 +37,7 @@ void ToDoItem::setName(wxString name) {
     this->name = name;
 }
 
+Task ToDoItem::getTask() {
+    return Task(name, priority, isCompleted, date);
+}
 

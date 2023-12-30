@@ -30,15 +30,18 @@ private:
     std::vector<wxString> names;
     std::vector<wxDateTime> dates;
     std::vector<Priority> priorities;
+    wxListBox *taskListBox;
 
 public:
-     wxString getNames() ;
+    wxString getNames();
 
-    wxDateTime getDates() ;
+    wxDateTime getDates();
 
-    Priority getPriorities() ;
+    Priority getPriorities();
 
     ItemControllerObserver *observer;
+
+    void showTaskFrame(wxString name, wxDateTime date, Priority priority);
 
 };
 

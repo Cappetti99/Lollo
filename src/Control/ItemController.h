@@ -28,6 +28,8 @@ public:
 
     virtual void onAddTaskButtonClicked() override;
 
+    void showTask(wxString name, wxDateTime date, Priority priority);
+
 private:
     Frame *frame;
 

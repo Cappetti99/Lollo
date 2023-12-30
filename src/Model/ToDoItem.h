@@ -6,7 +6,6 @@
 #define LOLLO_TODOITEM_H
 
 #include <wx/wx.h>
-#include "../View/Priority.h"
 #include "Task.h"
 
 
@@ -28,6 +27,8 @@ public:
     void setIsCompleted(bool isCompleted);
     void setName(wxString name);
     void setPriority(int priority);
+
+    Task getTask();
 
 
 };

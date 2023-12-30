@@ -3,3 +3,12 @@
 //
 
 #include "Task.h"
+
+Task::Task(const wxString &title, Priority priority, bool completed, const wxDateTime &expirationDate) {
+
+    this->title = title;
+    this->priority = priority;
+    this->completed = completed;
+    this->expirationDate = expirationDate;
+
+}
