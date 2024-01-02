@@ -13,9 +13,7 @@ ToDoItem::ToDoItem(wxString name, wxDateTime date, Priority priority /*, int pri
     this->priority = priority;
     this->isCompleted = false;
 
-    std::cout << "item created" << std::endl;
-    wxMessageBox(name);
-    wxMessageBox(date.FormatISODate());
+    //std::cout << "item created" << std::endl;
 
     auto task = new Task(name, priority, isCompleted, date);
 //todo da pensare come pushare il task nella lista

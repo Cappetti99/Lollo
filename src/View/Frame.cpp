@@ -46,15 +46,37 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
     SetSizerAndFit(mainSizer);
 
     SetSize(wxSize(800, 600));
+
+    //disabilita il bottone add se non c'è niente scritto
+
+//    if (taskTextCtrl->IsEmpty()) {
+//        addButton->Enable(false);
+//    } else {
+//        addButton->Enable(true);
+//    }
+
 }
 
 void Frame::addTaskButton(wxCommandEvent &event) {
     std::cout << "addTaskButton" << std::endl;
+    //controllo che non sia vuoto
+    if (taskTextCtrl->IsEmpty()) {
+        wxMessageBox("Inserisci un task!");
+        return;
+    }
+
     wxString name = taskTextCtrl->GetValue();
     DateSelection dateSelection(this, "Select expiration date:");
     if (!name.IsEmpty()) {
         if (dateSelection.ShowModal() == wxID_OK) {
             wxDateTime dateTime = dateSelection.getDatePicker()->GetValue();
+            //fai un controllo in modo che non abbia una data passata
+            if (dateTime.IsEarlierThan(wxDateTime::Now() - wxTimeSpan::Days(1))) {
+                //tolgo un giorno perche' sennò da problemi con oggi
+                wxMessageBox("Hai inserito una data passata!");
+                return;
+            }
+
             PrioritySelection prioritySelection(this, "Select priority:");
             if (prioritySelection.ShowModal() == wxID_OK) {
                 Priority priority = prioritySelection.getSelectedPriority();
@@ -111,10 +133,6 @@ Priority Frame::getPriorities() {
 }
 
 void Frame::showTaskFrame(wxString name, wxDateTime date, Priority priority) {
-
-//    wxString taskString = task.getTitle() + " - Priority: " + priorityStr +
-//                          " - " + task.getExpirationDate().Format("%d %B, %Y");
-//    taskCheckBox->Append(taskString);
 
     wxString priorityString;
 
