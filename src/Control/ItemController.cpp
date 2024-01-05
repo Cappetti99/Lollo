@@ -31,6 +31,12 @@ void ItemController::addItem(wxString name, wxDateTime date, Priority priority) 
     showTask(name, date, priority);
 }
 
+void ItemController::showTask(wxString name, wxDateTime date, Priority priority) {
+
+    //farla vedere sul frame
+    frame->showTaskFrame(name, date, priority);
+
+}
 
 void ItemController::onRemoveTaskButtonClicked(int index) {
 
@@ -44,8 +50,15 @@ void ItemController::onRemoveTaskButtonClicked(int index) {
 void ItemController::removeItem(int index) {
 
     //std::cout << "ItemController::removeItem()" << std::endl;
-    item->removeTask(index);
+    //item->removeTask(index);
+    removeFrame(index);
 }
+
+void ItemController::removeFrame(int index) {
+
+    frame->removeTaskFrame(index);
+}
+
 
 void ItemController::markItemAsCompleted() {
 
@@ -55,9 +68,4 @@ void ItemController::searchItem() {
 
 }
 
-void ItemController::showTask(wxString name, wxDateTime date, Priority priority) {
 
-    //farla vedere sul frame
-    frame->showTaskFrame(name, date, priority);
-
-}

@@ -18,7 +18,6 @@ void ToDoItem::addTask(wxString name, wxDateTime date, Priority priority) {
     auto task = new Task(name, priority, isCompleted, date) ;
 
     tasks.push_back(*task);
-    wxMessageBox(tasks[0].getTitle());
 
     std::cout << "item created" << std::endl;
 }

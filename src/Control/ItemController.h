@@ -32,6 +32,8 @@ public:
 
     void showTask(wxString name, wxDateTime date, Priority priority);
 
+    void removeFrame(int index);
+
 private:
     Frame *frame;
     ToDoItem *item;

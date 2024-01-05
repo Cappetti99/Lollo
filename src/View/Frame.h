@@ -12,8 +12,23 @@
 #include "../Control/ItemControllerObserver.h"
 
 class Frame : public wxFrame {
+
 public:
     Frame(const wxString &title, const wxPoint &pos, const wxSize &size, ItemControllerObserver *observer);
+
+    wxString getNames();
+
+    wxDateTime getDates();
+
+    Priority getPriorities();
+
+    ItemControllerObserver *observer;
+
+    void showTaskFrame(wxString name, wxDateTime date, Priority priority);
+
+    void removeTaskFrame(int index);
+
+    void refreshTaskFrame();
 
 wxDECLARE_EVENT_TABLE();
 
@@ -31,17 +46,6 @@ private:
     std::vector<wxDateTime> dates;
     std::vector<Priority> priorities;
     wxListBox *taskListBox;
-
-public:
-    wxString getNames();
-
-    wxDateTime getDates();
-
-    Priority getPriorities();
-
-    ItemControllerObserver *observer;
-
-    void showTaskFrame(wxString name, wxDateTime date, Priority priority);
 
 };
 

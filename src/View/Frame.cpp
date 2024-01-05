@@ -19,6 +19,7 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
 
     std::cout << "Frame created" << std::endl;
 
+
     auto buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
 
     taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
@@ -46,6 +47,8 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
     SetSizerAndFit(mainSizer);
 
     SetSize(wxSize(800, 600));
+
+
 }
 
 void Frame::addTaskButton(wxCommandEvent &event) { //fixme c'è da sistemare delle casistiche
@@ -108,9 +111,7 @@ void Frame::removeTaskButton(wxCommandEvent &event) {
                 observer->onRemoveTaskButtonClicked(selectedIndex);
             }
         }
-
     }
-
 }
 
 void Frame::searchTaskButton(wxCommandEvent &event) {
@@ -123,7 +124,6 @@ wxString Frame::getNames() {
     wxString name;
     if (!names.empty()) {
         name = names.back();
-        names.pop_back();
     }
     return name;
 }
@@ -132,7 +132,6 @@ wxDateTime Frame::getDates() {
     wxDateTime date;
     if (!dates.empty()) {
         date = dates.back();
-        dates.pop_back();
     }
     return date;
 }
@@ -141,7 +140,6 @@ Priority Frame::getPriorities() {
     Priority priority;
     if (!priorities.empty()) {
         priority = priorities.back();
-        priorities.pop_back();
     }
     return priority;
 }
@@ -165,5 +163,27 @@ void Frame::showTaskFrame(wxString name, wxDateTime date, Priority priority) {
 
 }
 
+void Frame::removeTaskFrame(int index) {
 
+//    std::cout << "Frame::removeTaskFrame()" << std::endl;
 
+    names.erase(names.begin() + index);
+    dates.erase(dates.begin() + index);
+    priorities.erase(priorities.begin() + index);
+
+//    std::cout << "names.size() = " << names.size() << std::endl;
+
+    refreshTaskFrame();
+
+}
+
+void Frame::refreshTaskFrame() {
+
+//    std::cout << "Frame::refreshTaskFrame()" << std::endl;
+
+    taskListBox->Clear();
+
+    for (int i = 0; i < names.size(); i++) {
+        showTaskFrame(names[i], dates[i], priorities[i]);
+    }
+}
