@@ -8,7 +8,8 @@
 enum class Priority{
     Low,
     Medium,
-    High
+    High,
+    None
 };
 
 #endif //LOLLO_PRIORITY_H

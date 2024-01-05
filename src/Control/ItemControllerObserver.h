@@ -10,6 +10,8 @@ class ItemControllerObserver {
 
 public:
     virtual void onAddTaskButtonClicked() = 0;
+    virtual void onRemoveTaskButtonClicked(int index) = 0;
+    //virtual void onEditTaskButtonClicked() = 0;
 
 };
 

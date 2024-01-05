@@ -33,6 +33,8 @@ PrioritySelection::PrioritySelection(wxWindow* parent, const wxString& title)
     SetSizerAndFit(mainSizer);
 }
 
+//fixme quando annullo inserisce comunque la task, non a schermo perchè le due cose non sono collegate
+
 
 void PrioritySelection::OnOK(wxCommandEvent& event) {
     if (lowButton->GetValue()) {
@@ -41,8 +43,6 @@ void PrioritySelection::OnOK(wxCommandEvent& event) {
         selectedPriority = Priority::Medium;
     } else if (highButton->GetValue()) {
         selectedPriority = Priority::High;
-    } else {
-        selectedPriority = Priority::Low;
     }
 
     EndModal(wxID_OK);
@@ -50,6 +50,7 @@ void PrioritySelection::OnOK(wxCommandEvent& event) {
 
 void PrioritySelection::OnCancel(wxCommandEvent& event) {
     EndModal(wxID_CANCEL);
+    selectedPriority = Priority::None;
 }
 
 Priority PrioritySelection::getSelectedPriority() const {

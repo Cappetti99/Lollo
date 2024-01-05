@@ -11,4 +11,13 @@ Task::Task(const wxString &title, Priority priority, bool completed, const wxDat
     this->completed = completed;
     this->expirationDate = expirationDate;
 
+    wxMessageBox(title);
+    wxMessageBox(expirationDate.FormatISODate());
+
 }
+
+const wxString &Task::getTitle() const {
+    return title;
+}
+
+

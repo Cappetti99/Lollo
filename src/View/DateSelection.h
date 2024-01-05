@@ -18,6 +18,8 @@ public:
     void setDatePicker(wxDatePickerCtrl *datePicker);
 
     private:
+    //voglio dare un valore di default a datePicker
+
     wxDatePickerCtrl* datePicker;
 
 };

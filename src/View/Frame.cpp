@@ -24,7 +24,7 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
     taskTextCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                   wxTE_PROCESS_ENTER);
 
-    taskListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE);
+    taskListBox = new wxCheckListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE);
 
     //bottoni
     auto addButton = new wxButton(this, ID_AddTaskButton, "Add Task");
@@ -46,19 +46,10 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
     SetSizerAndFit(mainSizer);
 
     SetSize(wxSize(800, 600));
-
-    //disabilita il bottone add se non c'è niente scritto
-
-//    if (taskTextCtrl->IsEmpty()) {
-//        addButton->Enable(false);
-//    } else {
-//        addButton->Enable(true);
-//    }
-
 }
 
-void Frame::addTaskButton(wxCommandEvent &event) {
-    std::cout << "addTaskButton" << std::endl;
+void Frame::addTaskButton(wxCommandEvent &event) { //fixme c'è da sistemare delle casistiche
+//    std::cout << "addTaskButton" << std::endl;
     //controllo che non sia vuoto
     if (taskTextCtrl->IsEmpty()) {
         wxMessageBox("Inserisci un task!");
@@ -75,11 +66,17 @@ void Frame::addTaskButton(wxCommandEvent &event) {
                 //tolgo un giorno perche' sennò da problemi con oggi
                 wxMessageBox("Hai inserito una data passata!");
                 return;
-            }
+            } //gestire il cancel
 
             PrioritySelection prioritySelection(this, "Select priority:");
             if (prioritySelection.ShowModal() == wxID_OK) {
                 Priority priority = prioritySelection.getSelectedPriority();
+                if (priority == Priority::None) {
+                    wxMessageBox("Inserisci una priorità!");
+                    return;
+                }
+
+
                 names.push_back(name);
                 dates.push_back(dateTime);
                 priorities.push_back(priority);
@@ -97,6 +94,23 @@ void Frame::addTaskButton(wxCommandEvent &event) {
 void Frame::removeTaskButton(wxCommandEvent &event) {
 
     std::cout << "removeTaskButton" << std::endl;
+
+    int selectedIndex = taskListBox->GetSelection();
+    if (selectedIndex != wxNOT_FOUND) {
+        wxMessageDialog confirmDialog(this,
+                                      "Sei sicuro di volerla eliminare?", "Conferma eliminazione",
+                                      wxYES_NO | wxICON_QUESTION);
+
+        int response = confirmDialog.ShowModal();
+
+        if (response == wxID_YES) {
+            if (observer) {
+                observer->onRemoveTaskButtonClicked(selectedIndex);
+            }
+        }
+
+    }
+
 }
 
 void Frame::searchTaskButton(wxCommandEvent &event) {

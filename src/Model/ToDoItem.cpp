@@ -6,36 +6,34 @@
 
 //todo da pensare come collegare la task qui con quella che facciamo vedere nel frame
 
+ToDoItem::ToDoItem() {
 
-ToDoItem::ToDoItem(wxString name, wxDateTime date, Priority priority /*, int priority*/ ) {
-    this->name = name;
-    this->date = date;
-    this->priority = priority;
-    this->isCompleted = false;
-
-    //std::cout << "item created" << std::endl;
-
-    auto task = new Task(name, priority, isCompleted, date);
-//todo da pensare come pushare il task nella lista
+//    addTask(name, date, priority);
 }
 
-wxString ToDoItem::getName() {
-    return this->name;
+void ToDoItem::addTask(wxString name, wxDateTime date, Priority priority) {
+
+    bool isCompleted = false;
+
+    auto task = new Task(name, priority, isCompleted, date) ;
+
+    tasks.push_back(*task);
+    wxMessageBox(tasks[0].getTitle());
+
+    std::cout << "item created" << std::endl;
 }
 
-bool ToDoItem::getIsCompleted() {
-    return this->isCompleted;
+void ToDoItem::removeTask(int index) {
+
+    std::cout << "tasks.size =" << tasks.size()<< std::endl;
+    std::cout << "index =" << index << std::endl;
+    if (tasks.size() >= index + 1) {
+        tasks.erase(tasks.begin() + index);
+    } else {
+        std::cout << "gay" << std::endl; //ci entra quando è vuota
+    }
+
+    std::cout << "ToDoItem::removeTask() - tasks.size() = " << tasks.size() << std::endl;
 }
 
-void ToDoItem::setIsCompleted(bool isCompleted) {
-    this->isCompleted = isCompleted;
-}
-
-void ToDoItem::setName(wxString name) {
-    this->name = name;
-}
-
-Task ToDoItem::getTask() {
-    return Task(name, priority, isCompleted, date);
-}
 

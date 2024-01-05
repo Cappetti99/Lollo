@@ -7,17 +7,16 @@
 
 ItemController::ItemController() {
 
-    frame = new Frame( "ToDoList", wxPoint(800, 600), wxSize(450, 340), this);
-    frame->Show( true );
+    frame = new Frame("ToDoList", wxPoint(800, 600), wxSize(450, 340), this);
+    frame->Show(true);
+
+    item = new ToDoItem();
 
 }
 
 void ItemController::onAddTaskButtonClicked() {
 
-    std::cout << "ItemController::onAddTaskButtonClicked()" << std::endl;
-
-//    wxMessageBox(frame->getNames());
-//    wxMessageBox(frame->getDates().FormatISODate());
+    //std::cout << "ItemController::onAddTaskButtonClicked()" << std::endl;
 
     addItem(frame->getNames(), frame->getDates(), frame->getPriorities());
     //probabilmente potremmo fare tutto qui, senza passare da un'altra funzione
@@ -26,17 +25,26 @@ void ItemController::onAddTaskButtonClicked() {
 
 void ItemController::addItem(wxString name, wxDateTime date, Priority priority) {
 
-    std::cout << "ItemController::addItem()" << std::endl;
+    //std::cout << "ItemController::addItem()" << std::endl;
+    item->addTask(name, date, priority);
 
-    auto item = new ToDoItem(name, date, priority);
-//    if(item->isCompleted()){
-//    ci va un controllo per il fatto se è completata o no
-//    }
-    showTask( name, date, priority );
+    showTask(name, date, priority);
 }
 
-void ItemController::removeItem() {
 
+void ItemController::onRemoveTaskButtonClicked(int index) {
+
+    //std::cout << "ItemController::onRemoveTaskButtonClicked()" << std::endl;
+
+    removeItem(index);
+
+}
+
+
+void ItemController::removeItem(int index) {
+
+    //std::cout << "ItemController::removeItem()" << std::endl;
+    item->removeTask(index);
 }
 
 void ItemController::markItemAsCompleted() {

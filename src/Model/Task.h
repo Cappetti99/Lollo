@@ -11,14 +11,22 @@
 class Task {
 
 public:
-    Task(const wxString& title = "", Priority priority = Priority::Low,
-         bool completed = false, const wxDateTime& expirationDate = wxDateTime::Now());
+    Task(const wxString &title = "", Priority priority = Priority::Low,
+         bool completed = false, const wxDateTime &expirationDate = wxDateTime::Now());
+
+
+
+    const wxString &getTitle() const;
+
+
+
 
 private:
     wxString title;
     Priority priority;
     bool completed;
     wxDateTime expirationDate;
+
 
 };
 

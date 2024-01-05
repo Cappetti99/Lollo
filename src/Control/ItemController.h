@@ -20,7 +20,7 @@ public:
 
     void addItem(wxString name, wxDateTime date, Priority priority);
 
-    void removeItem();
+    void removeItem(int index);
 
     void markItemAsCompleted();
 
@@ -28,10 +28,13 @@ public:
 
     virtual void onAddTaskButtonClicked() override;
 
+    virtual void onRemoveTaskButtonClicked(int index) override;
+
     void showTask(wxString name, wxDateTime date, Priority priority);
 
 private:
     Frame *frame;
+    ToDoItem *item;
 
 };
 
