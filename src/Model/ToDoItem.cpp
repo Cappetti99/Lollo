@@ -35,4 +35,18 @@ void ToDoItem::removeTask(int index) {
     std::cout << "ToDoItem::removeTask() - tasks.size() = " << tasks.size() << std::endl;
 }
 
+std::vector<Task> ToDoItem::getVector() {
+    return tasks;
+}
 
+wxString ToDoItem::getName(int index) {
+    return tasks[index].getTitle();
+}
+
+wxDateTime ToDoItem::getDate(int index) {
+    return tasks[index].getExpirationDate();
+}
+
+Priority ToDoItem::getPriority(int index) {
+    return tasks[index].getPriority();
+}

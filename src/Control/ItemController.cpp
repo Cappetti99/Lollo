@@ -46,11 +46,12 @@ void ItemController::onRemoveTaskButtonClicked(int index) {
 
 }
 
-
 void ItemController::removeItem(int index) {
 
     //std::cout << "ItemController::removeItem()" << std::endl;
-    //item->removeTask(index);
+    //wxString name = item->getName(index);
+    item->removeTask(index); //todo da cambiare perchè elimina per indice e non per nome
+
     removeFrame(index);
 }
 
@@ -59,13 +60,40 @@ void ItemController::removeFrame(int index) {
     frame->removeTaskFrame(index);
 }
 
+void ItemController::onSearchTaskButtonClicked(wxString searchKeyword) {
+
+//    std::cout << "ItemController::onSearchTaskButtonClicked()" << std::endl;
+
+    searchItem(searchKeyword);
+
+}
 
 void ItemController::markItemAsCompleted() {
 
 }
 
-void ItemController::searchItem() {
+void ItemController::searchItem(wxString searchKeyword) {
 
+    frame->ClearFrame();
+    std::vector<Task*> tasks;
+    for(int i = 0; i < item->getVector().size(); i++) {
+        wxString taskName = item->getName(i);
+        if (taskName.Find(searchKeyword) != wxNOT_FOUND) {
+            tasks.push_back(&item->tasks[i]);
+            frame->showSearchFrame(item->getName(i), item->getDate(i), item->getPriority(i));
+
+        }
+    }
+
+//    for (int i = 0; i < tasks.size(); ++i) {
+//        wxString taskName = item->getName(i);
+//
+//        if (taskName.Find(searchKeyword) != wxNOT_FOUND) {
+//            wxDateTime taskDate = item->getDate(i);
+//            Priority taskPriority = item->getPriority(i);
+//            frame->showSearchFrame(taskName, taskDate, taskPriority);
+//        }
+//    }
 }
 
 

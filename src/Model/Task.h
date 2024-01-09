@@ -15,8 +15,13 @@ public:
          bool completed = false, const wxDateTime &expirationDate = wxDateTime::Now());
 
 
+    const wxString getTitle() const;
 
-    const wxString &getTitle() const;
+    const Priority getPriority() const;
+
+    const wxDateTime getExpirationDate() const;
+
+
 
 
 

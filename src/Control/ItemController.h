@@ -24,11 +24,13 @@ public:
 
     void markItemAsCompleted();
 
-    void searchItem();
+    void searchItem(wxString searchKeyword);
 
     virtual void onAddTaskButtonClicked() override;
 
     virtual void onRemoveTaskButtonClicked(int index) override;
+
+    virtual void onSearchTaskButtonClicked(wxString searchKeyword) override;
 
     void showTask(wxString name, wxDateTime date, Priority priority);
 

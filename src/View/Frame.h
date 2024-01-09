@@ -26,9 +26,13 @@ public:
 
     void showTaskFrame(wxString name, wxDateTime date, Priority priority);
 
+    void showSearchFrame(wxString name, wxDateTime date, Priority priority);
+
     void removeTaskFrame(int index);
 
     void refreshTaskFrame();
+
+    void ClearFrame();
 
 wxDECLARE_EVENT_TABLE();
 
@@ -41,11 +45,13 @@ private:
 
     void searchTaskButton(wxCommandEvent &event);
 
+
     wxTextCtrl *taskTextCtrl;
     std::vector<wxString> names;
     std::vector<wxDateTime> dates;
     std::vector<Priority> priorities;
     wxListBox *taskListBox;
+    wxTextCtrl *searchInput;
 
 };
 

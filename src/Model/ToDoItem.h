@@ -23,6 +23,14 @@ public:
 
     void removeTask(int index);
 
+    std::vector<Task> getVector();
+
+    wxString getName(int index);
+
+    wxDateTime getDate(int index);
+
+    Priority getPriority(int index);
+
     std::vector<Task> tasks;
 
 

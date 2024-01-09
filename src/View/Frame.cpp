@@ -5,13 +5,17 @@
 #include "Frame.h"
 
 
-wxBEGIN_EVENT_TABLE(Frame, wxFrame)
-                EVT_BUTTON(ID_AddTaskButton, Frame::addTaskButton)
-                EVT_BUTTON(ID_RemoveTaskButton, Frame::removeTaskButton)
-                EVT_BUTTON(ID_SearchTaskButton, Frame::searchTaskButton)
-wxEND_EVENT_TABLE()
+wxBEGIN_EVENT_TABLE(Frame, wxFrame
+)
+EVT_BUTTON(ID_AddTaskButton, Frame::addTaskButton
+)
+EVT_BUTTON(ID_RemoveTaskButton, Frame::removeTaskButton
+)
+EVT_BUTTON(ID_SearchTaskButton, Frame::searchTaskButton
+)
 
-//potrei fare che nel costruttore rimanda a delle funzioni che creano bottoni e gestiscono la cosa mandandola al controller
+//EVT_BUTTON(ID_SortTaskButton, Frame::sortTaskButton)
+wxEND_EVENT_TABLE()
 
 
 Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, ItemControllerObserver *observer)
@@ -33,11 +37,13 @@ Frame::Frame(const wxString &title, const wxPoint &pos, const wxSize &size, Item
     auto searchButton = new wxButton(this, ID_SearchTaskButton, "Search Tasks");
     //auto sortButton = new wxButton(this, wxID_ANY, "Sort Tasks");
 
+    searchInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
 
     buttonsSizer->Add(addButton, 5, wxALL, 10);
     buttonsSizer->Add(removeButton, 5, wxALL, 10);
     buttonsSizer->Add(searchButton, 5, wxALL, 10);
     //buttonsSizer->Add(sortButton, 5, wxALL, 10); sort?
+    buttonsSizer->Add(searchInput, 5, wxALL, 10);
 
     auto mainSizer = new wxBoxSizer(wxVERTICAL);
     mainSizer->Add(buttonsSizer, 0, wxALIGN_CENTER | wxTOP, 20);
@@ -79,7 +85,6 @@ void Frame::addTaskButton(wxCommandEvent &event) { //fixme c'è da sistemare del
                     return;
                 }
 
-
                 names.push_back(name);
                 dates.push_back(dateTime);
                 priorities.push_back(priority);
@@ -116,7 +121,19 @@ void Frame::removeTaskButton(wxCommandEvent &event) {
 
 void Frame::searchTaskButton(wxCommandEvent &event) {
 
-    std::cout << "searchTaskButton" << std::endl;
+//    std::cout << "searchTaskButton" << std::endl;
+
+    wxString searchKeyword = searchInput->GetValue();
+
+//    if (searchKeyword.IsEmpty() || searchKeyword == " ") {
+//        wxMessageBox("Inserisci una parola chiave!");
+//        return;
+//    } //l'ho tolta perchè si visualizzano tutte senza scrivere niente sulla barra
+
+    if (observer) {
+        observer->onSearchTaskButtonClicked(searchKeyword);
+    }
+
 }
 
 wxString Frame::getNames() {
@@ -163,6 +180,30 @@ void Frame::showTaskFrame(wxString name, wxDateTime date, Priority priority) {
 
 }
 
+void Frame::ClearFrame() {
+    taskListBox->Clear();
+}
+
+void Frame::showSearchFrame(wxString name, wxDateTime date, Priority priority) {
+
+    wxString priorityString;
+
+    if (priority == Priority::High) {
+        priorityString = "HIGH";
+    } else if (priority == Priority::Medium) {
+        priorityString = "MEDIUM";
+    } else if (priority == Priority::Low) {
+        priorityString = "LOW";
+    }
+
+    wxString taskString = name + " - Priority: " + priorityString +
+                          " - " + date.Format("%d %B, %Y");
+
+    taskListBox->Append(taskString);
+
+
+}
+
 void Frame::removeTaskFrame(int index) {
 
 //    std::cout << "Frame::removeTaskFrame()" << std::endl;
@@ -173,6 +214,7 @@ void Frame::removeTaskFrame(int index) {
 
 //    std::cout << "names.size() = " << names.size() << std::endl;
 
+
     refreshTaskFrame();
 
 }
@@ -181,8 +223,7 @@ void Frame::refreshTaskFrame() {
 
 //    std::cout << "Frame::refreshTaskFrame()" << std::endl;
 
-    taskListBox->Clear();
-
+    ClearFrame();
     for (int i = 0; i < names.size(); i++) {
         showTaskFrame(names[i], dates[i], priorities[i]);
     }
